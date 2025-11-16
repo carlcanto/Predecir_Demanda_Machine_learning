@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  demand-forecast-app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend:/app/frontend
+      - ./backend:/app/backend
+      - ./sample_data:/app/sample_data
+      - ./shared_data:/app/shared_data
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_THEME_BASE=light
+      - CHOKIDAR_USEPOLLING=true
+      - STREAMLIT_SERVER_RUN_ON_SAVE=true
+      - STREAMLIT_SERVER_FILE_WATCHER_TYPE=poll
+    working_dir: /app
+    command: streamlit run frontend/app.py --server.port=8501 --server.address=0.0.0.0 --server.runOnSave=true --server.fileWatcherType=poll --server.enableCORS=false

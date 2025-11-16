@@ -1,0 +1,21 @@
+conferencia_demand_forecast/
+│
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+├── .env
+│
+├── frontend/
+│   ├── app.py                 # Streamlit UI
+│   └── components/
+│       ├── sidebar.py
+│       └── data_display.py
+│
+├── backend/
+│   ├── data_processor.py      # Lógica de datos
+│   ├── file_handler.py        # Manejo de archivos
+│   └── utils/
+│       └── config.py
+│
+└── sample_data/
+    └── datos_ejemplo.xlsx
