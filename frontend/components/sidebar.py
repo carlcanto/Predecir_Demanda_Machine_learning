@@ -12,7 +12,7 @@ def render_sidebar():
             </style>
         """, unsafe_allow_html=True)
         
-        st.title("⚙️ Configuración de Predicción")
+        st.title("⚙️ Configuración de Predicción carlos")
         
         # Sección 1: Carga de Datos
         st.header("📁 Carga de Datos")
@@ -60,11 +60,42 @@ def render_sidebar():
                 options=["7 días", "30 días", "90 días"]
             )
         
-        # Botón Principal
+        # PASO 2: Actualizar Sidebar - Botón de Predicción
+        # Sección: Controles de Predicción ML
+        st.header("🤖 Predicción ML")
+        
+        # Slider: "Días a predecir" (7, 30, 90 días)
+        dias_prediccion = st.slider(
+            "Días a predecir",
+            min_value=7,
+            max_value=90,
+            value=30,
+            step=1,
+            help="Selecciona el número de días para la predicción"
+        )
+        
+        # Selector: "Artículo para predecir" (usa el dropdown existente)
+        # Nota: Ya tienes 'articulo_seleccionado' arriba, pero puedes duplicarlo si es necesario
+        # Si necesitas otro selector específico para ML, descomenta esta línea:
+        # articulo_prediccion = st.selectbox(
+        #     "Artículo para predecir",
+        #     options=st.session_state.unique_articles,
+        #     help="Seleccionar artículo para la predicción ML"
+        # )
+        
+        # Botón grande: "🚀 Ejecutar Predicción ML"
+        ejecutar_prediccion_ml = st.button(
+            "🚀 Ejecutar Predicción ML",
+            type="primary",
+            use_container_width=True,
+            help="Ejecutar modelo de predicción con Machine Learning"
+        )
+        
+        # Botón Principal Original
         st.markdown("---")
         ejecutar_prediccion = st.button(
             "🎯 Ejecutar Predicción de Demanda",
-            type="primary",
+            type="secondary",  # Cambié a secondary para distinguir del ML
             use_container_width=True
         )
     
@@ -75,5 +106,7 @@ def render_sidebar():
         'incluir_precio': incluir_precio,
         'fecha_inicio': fecha_inicio,
         'duracion': duracion,
-        'ejecutar_prediccion': ejecutar_prediccion
+        'dias_prediccion': dias_prediccion,
+        'ejecutar_prediccion': ejecutar_prediccion,
+        'ejecutar_prediccion_ml': ejecutar_prediccion_ml
     }

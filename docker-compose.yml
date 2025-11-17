@@ -4,7 +4,7 @@ services:
   demand-forecast-app:
     build: .
     ports:
-      - "8501:8501"
+      - "8502:8501"
     volumes:
       - ./frontend:/app/frontend
       - ./backend:/app/backend
